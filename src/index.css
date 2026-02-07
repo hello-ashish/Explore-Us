@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 220 40% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 220 40% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 187 80% 52%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 220 30% 16%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 220 25% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 260 70% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 187 80% 52%;
+
+    --radius: 1rem;
+
+    /* Custom glass tokens */
+    --glass-bg: 220 40% 12% / 0.6;
+    --glass-border: 220 20% 30% / 0.3;
+    --glass-highlight: 187 80% 52% / 0.1;
+    --glow-primary: 187 80% 52%;
+    --glow-accent: 260 70% 60%;
+    --gradient-hero: linear-gradient(135deg, hsl(222 47% 6%) 0%, hsl(230 40% 12%) 50%, hsl(222 47% 6%) 100%);
+
+    --sidebar-background: 220 40% 8%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 187 80% 52%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 220 30% 16%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 187 80% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-500;
+    background: hsla(var(--glass-bg));
+    border-color: hsla(var(--glass-border));
+  }
+
+  .glass-card:hover {
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow:
+      0 0 30px hsl(var(--glow-primary) / 0.15),
+      0 8px 32px hsl(var(--background) / 0.4),
+      inset 0 1px 0 hsl(220 20% 40% / 0.2);
+    transform: translateY(-4px);
+  }
+
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--glow-primary) / 0.08) 0%,
+      transparent 50%,
+      hsl(var(--glow-accent) / 0.05) 100%
+    );
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+
+  .glass-surface {
+    @apply backdrop-blur-xl rounded-xl border;
+    background: hsla(var(--glass-bg));
+    border-color: hsla(var(--glass-border));
+  }
+
+  .category-chip {
+    @apply px-4 py-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-300 border;
+    background: hsla(var(--glass-bg));
+    border-color: hsla(var(--glass-border));
+    color: hsl(var(--muted-foreground));
+  }
+
+  .category-chip:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    color: hsl(var(--foreground));
+    background: hsl(var(--primary) / 0.1);
+  }
+
+  .category-chip.active {
+    background: hsl(var(--primary) / 0.15);
+    border-color: hsl(var(--primary) / 0.6);
+    color: hsl(var(--primary));
+    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.2);
+  }
+
+  .glow-text {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--primary)) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s ease-in-out infinite;
+  }
+
+  .hero-glow {
+    @apply absolute rounded-full blur-3xl opacity-20 pointer-events-none;
+  }
+
+  .search-glass {
+    @apply w-full backdrop-blur-xl rounded-2xl border px-6 py-4 text-base outline-none transition-all duration-300;
+    background: hsla(var(--glass-bg));
+    border-color: hsla(var(--glass-border));
+    color: hsl(var(--foreground));
+  }
+
+  .search-glass::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .search-glass:focus {
+    border-color: hsl(var(--primary) / 0.6);
+    box-shadow: 0 0 30px hsl(var(--glow-primary) / 0.15);
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes grid-fade {
+  0% { opacity: 0; }
+  50% { opacity: 0.05; }
+  100% { opacity: 0; }
+}
