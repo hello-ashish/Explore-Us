@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://exploreus.dev/projects/REPLACE_WITH_PROJECT_ID
+**URL**: [Explore-Us](https://explore-us.vercel.app/)
 
 ## How can I edit this code?
 
@@ -10,7 +10,7 @@ There are several ways of editing your application.
 
 **Use ExploreUs**
 
-Simply visit the [ExploreUs Project](https://exploreus.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Simply visit the [ExploreUs Project](https://explore-us.vercel.app/) and start prompting.
 
 Changes made via ExploreUs will be committed automatically to this repo.
 
