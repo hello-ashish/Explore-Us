@@ -1,73 +1,83 @@
-# Welcome to your ExploreUs project
+# ExploreUs - Premium AI Tool Directory
 
-## Project info
+![ExploreUs Preview](https://via.placeholder.com/1200x600/000000/FFFFFF?text=ExploreUs+AI+Directory)
 
-**URL**: [Explore-Us](https://explore-us.vercel.app/)
+**Live Demo:** [https://explore-us.vercel.app/](https://explore-us.vercel.app/)
 
-## How can I edit this code?
+**ExploreUs** is a beautifully crafted, modern directory for discovering and organizing the best Artificial Intelligence tools available today. Built with a focus on stunning aesthetics, it features a premium glassmorphism UI, fluid animations, and a rich dark/light mode experience.
 
-There are several ways of editing your application.
+## Features
 
-**Use ExploreUs**
+- **Premium UI/UX:** Built with Tailwind CSS and Framer Motion for smooth, dynamic animations, hover effects, and a modern glassmorphism design.
+- **Dark/Light Mode:** Seamlessly switch between a deep, rich dark theme and a clean, elegant light theme.
+- **Advanced Search & Filtering:** Instantly search for AI tools by name, description, or tags, and filter by categories like Text & Writing, Image Generation, Code & Dev, Video & Audio, and more.
+- **Favorites System:** Save your most-used AI tools to your favorites for quick access later.
+- **Collections:** Create custom collections to organize tools based on your specific workflows (e.g., "Content Creation Workflow", "Developer Stack").
+- **Trending Tools:** Discover what's hot in the AI space with a dedicated trending section.
+- **Fully Responsive:** Carefully designed to look and work perfectly on desktop, tablet, and mobile devices.
 
-Simply visit the [ExploreUs Project](https://explore-us.vercel.app/) and start prompting.
+## Tech Stack
 
-Changes made via ExploreUs will be committed automatically to this repo.
+This project is built using modern web development technologies:
 
-**Use your preferred IDE**
+- **Framework:** [React 18](https://react.dev/) with [Vite](https://vitejs.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Components:** [shadcn/ui](https://ui.shadcn.com/) (Radix UI primitives)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Routing:** [React Router](https://reactrouter.com/)
+- **State Management:** React Context API (Favorites & Collections)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in ExploreUs.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+Make sure you have Node.js and npm installed on your machine.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/hello-ashish/Explore-Us.git
+   cd ExploreUs
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+3. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+
+4. **Open the app:**
+   Visit `http://localhost:8080` in your browser to see the application running.
+
+## Project Structure
+
+```
+ExploreUs/
+├── src/
+│   ├── components/      # Reusable UI components (Cards, Modals, Search, etc.)
+│   ├── contexts/        # React Context providers (Favorites, Collections)
+│   ├── data/            # Static data (AI tools, Categories)
+│   ├── pages/           # Page views (Home, Index, etc.)
+│   ├── lib/             # Utility functions
+│   ├── App.tsx          # Main application component & routing
+│   └── index.css        # Global CSS, Tailwind directives, and Theme Tokens
+├── tailwind.config.ts   # Tailwind CSS configuration
+├── tsconfig.json        # TypeScript configuration
+└── package.json         # Project metadata and dependencies
 ```
 
-**Edit a file directly in GitHub**
+## Contributing
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Contributions, issues, and feature requests are welcome! 
+Feel free to check the [issues page](../../issues) if you want to contribute.
 
-**Use GitHub Codespaces**
+## License
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [ExploreUs](https://exploreus.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my ExploreUs project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.exploreus.dev/features/custom-domain#custom-domain)
+This project is open-source and available under the [MIT License](LICENSE).

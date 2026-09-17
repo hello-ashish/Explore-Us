@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { Search } from "lucide-react";
 import ToolCard from "./ToolCard";
 import { type AITool } from "@/data/tools";
 
@@ -20,7 +21,7 @@ const ToolGrid = ({ tools, onToolClick }: ToolGridProps) => {
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          🔍
+          <Search className="w-12 h-12 mx-auto text-muted-foreground" />
         </motion.span>
         <h3 className="text-xl font-display font-semibold text-foreground mb-2">
           No tools found

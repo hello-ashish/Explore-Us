@@ -13,7 +13,7 @@ import { ExportTools } from "@/components/ExportTools";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { aiTools, AITool } from "@/data/tools";
 import { useFavorites } from "@/contexts/FavoritesContext";
-import { Heart } from "lucide-react";
+import { Heart, Sparkles, Library, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
@@ -163,7 +163,7 @@ const Index = () => {
         <footer className="relative z-10 border-t border-border/50 py-8 mt-10">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <p className="text-sm text-muted-foreground">
-              Built with ✨ — Discover the right AI tool for every task
+              Built with <Sparkles className="w-4 h-4 text-primary" /> — Discover the right AI tool for every task
             </p>
           </div>
         </footer>
