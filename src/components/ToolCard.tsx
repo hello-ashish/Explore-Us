@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Star } from "lucide-react";
+import { ArrowUpRight, Star, Heart } from "lucide-react";
 import { type AITool } from "@/data/tools";
 import { useRef, useState } from "react";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { Badge } from "@/components/ui/badge";
+
+import { forwardRef } from "react";
 
 interface ToolCardProps {
   tool: AITool;
@@ -11,15 +13,15 @@ interface ToolCardProps {
   onDetailsClick: (tool: AITool) => void;
 }
 
-const ToolCard = ({ tool, index, onDetailsClick }: ToolCardProps) => {
-  const cardRef = useRef<HTMLDivElement>(null);
+const ToolCard = forwardRef<HTMLDivElement, ToolCardProps>(
+  ({ tool, index, onDetailsClick }, ref) => {
+
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
+    const rect = e.currentTarget.getBoundingClientRect();
     setMousePos({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
@@ -37,19 +39,18 @@ const ToolCard = ({ tool, index, onDetailsClick }: ToolCardProps) => {
 
   const pricingColor =
     tool.pricing === "free"
-      ? "bg-green-500/10 text-green-700 dark:text-green-400"
+      ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/20"
       : tool.pricing === "freemium"
-        ? "bg-blue-500/10 text-blue-700 dark:text-blue-400"
-        : "bg-purple-500/10 text-purple-700 dark:text-purple-400";
+        ? "bg-blue-500/15 text-blue-400 border border-blue-500/20"
+        : "bg-purple-500/15 text-purple-400 border border-purple-500/20";
 
   return (
     <motion.div
-      ref={cardRef}
+      ref={ref}
       initial={{ opacity: 0, y: 40, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: (index % 4) * 0.08, duration: 0.5, ease: "easeOut" }}
-      whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
@@ -62,7 +63,7 @@ const ToolCard = ({ tool, index, onDetailsClick }: ToolCardProps) => {
         <div
           className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300 z-0"
           style={{
-            background: `radial-gradient(350px circle at ${mousePos.x}px ${mousePos.y}px, hsl(${tool.color} / 0.12), transparent 60%)`,
+            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, hsl(${tool.color} / 0.2), transparent 50%)`,
           }}
         />
       )}
@@ -84,7 +85,7 @@ const ToolCard = ({ tool, index, onDetailsClick }: ToolCardProps) => {
               whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
               transition={{ duration: 0.4 }}
             >
-              {tool.icon}
+              <tool.icon className="w-8 h-8" />
             </motion.span>
             <div className="flex-1">
               <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors duration-300">
@@ -97,7 +98,7 @@ const ToolCard = ({ tool, index, onDetailsClick }: ToolCardProps) => {
               onClick={handleFavoriteClick}
               className="text-lg hover:scale-110 transition-transform"
             >
-              {isFavorite(tool.id) ? "❤️" : "🤍"}
+              <Heart className={`w-5 h-5 transition-colors ${isFavorite(tool.id) ? "fill-red-500 text-red-500" : "text-muted-foreground group-hover:text-foreground"}`} />
             </button>
             <ArrowUpRight className="h-5 w-5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all duration-300 transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </div>
@@ -134,6 +135,7 @@ const ToolCard = ({ tool, index, onDetailsClick }: ToolCardProps) => {
       </div>
     </motion.div>
   );
-};
+});
 
+ToolCard.displayName = "ToolCard";
 export default ToolCard;

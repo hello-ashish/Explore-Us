@@ -31,7 +31,7 @@ export const TrendingSection: React.FC<TrendingSectionProps> = ({
             onClick={() => onToolClick(tool)}
           >
             <div className="flex items-start justify-between mb-3">
-              <span className="text-3xl">{tool.icon}</span>
+              <tool.icon className="w-8 h-8" />
               <Badge className="bg-red-500/10 text-red-700 dark:text-red-400">
                 Trending
               </Badge>

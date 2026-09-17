@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AITool } from "@/data/tools";
-import { Heart, ExternalLink, Copy, Check, Star } from "lucide-react";
+import { Heart, ExternalLink, Copy, Check, Star, Flame, Folder } from "lucide-react";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useCollections } from "@/contexts/CollectionsContext";
 import { useState } from "react";
@@ -50,7 +50,7 @@ export const ToolDetailsModal: React.FC<ToolDetailsModalProps> = ({
         <DialogHeader>
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-3">
-              <span className="text-4xl">{tool.icon}</span>
+              <tool.icon className="w-10 h-10" />
               <div>
                 <DialogTitle className="text-2xl">{tool.name}</DialogTitle>
                 <div className="flex items-center gap-2 mt-2">
@@ -58,8 +58,8 @@ export const ToolDetailsModal: React.FC<ToolDetailsModalProps> = ({
                     {tool.pricing.charAt(0).toUpperCase() + tool.pricing.slice(1)}
                   </Badge>
                   {tool.trending && (
-                    <Badge className="bg-red-500/10 text-red-700 dark:text-red-400">
-                      🔥 Trending
+                    <Badge className="bg-red-500/10 text-red-700 dark:text-red-400 flex items-center gap-1">
+                      <Flame className="w-3 h-3" /> Trending
                     </Badge>
                   )}
                 </div>
@@ -71,7 +71,7 @@ export const ToolDetailsModal: React.FC<ToolDetailsModalProps> = ({
               }
               className="text-2xl hover:scale-110 transition-transform"
             >
-              {isFavorite(tool.id) ? "❤️" : "🤍"}
+              <Heart className={`w-6 h-6 transition-colors ${isFavorite(tool.id) ? "fill-red-500 text-red-500" : "text-muted-foreground hover:text-foreground"}`} />
             </button>
           </div>
         </DialogHeader>
@@ -117,7 +117,7 @@ export const ToolDetailsModal: React.FC<ToolDetailsModalProps> = ({
                     className="p-3 rounded-lg border border-border/50 hover:border-primary/50 transition-colors cursor-pointer"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-lg">{relTool.icon}</span>
+                      <relTool.icon className="w-5 h-5" />
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-sm truncate">{relTool.name}</p>
                         <p className="text-xs text-muted-foreground">{relTool.category}</p>
@@ -140,7 +140,7 @@ export const ToolDetailsModal: React.FC<ToolDetailsModalProps> = ({
                   .filter((col) => col.toolIds.has(tool.id))
                   .map((col) => (
                     <Badge key={col.id} variant="outline">
-                      📁 {col.name}
+                      <Folder className="w-3 h-3 mr-1 inline" /> {col.name}
                     </Badge>
                   ))}
               </div>

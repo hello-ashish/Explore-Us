@@ -37,7 +37,7 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
       transition={{ delay: 0.4, duration: 0.6 }}
       className="relative w-full max-w-2xl mx-auto"
     >
-      <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none z-10" />
+      <Search className={`absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 pointer-events-none z-10 transition-colors duration-300 ${isFocused ? 'text-primary' : 'text-muted-foreground'}`} />
       <input
         ref={inputRef}
         type="text"
@@ -64,9 +64,9 @@ const SearchBar = ({ value, onChange }: SearchBarProps) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full left-0 right-0 mt-2 bg-background border border-border rounded-lg shadow-lg z-20"
+            className="absolute top-full left-0 right-0 mt-3 glass-surface shadow-2xl z-20 overflow-hidden"
           >
-            <div className="p-2 space-y-1">
+            <div className="p-2 space-y-1 bg-background/50">
               <div className="px-3 py-2 flex items-center justify-between">
                 <p className="text-xs font-semibold text-muted-foreground flex items-center gap-1">
                   <Clock className="w-3 h-3" />
